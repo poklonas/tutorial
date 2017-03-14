@@ -1,11 +1,54 @@
 <head>
+<style>
+    table{
+        width:90%;
+        border: 2px solid black;
+        border-collapse: collapse;
+    }
+    td,th{
+        text-align:center;
+        border: 2px solid black;
+     }
+
+</style>
+
+
 </head>
 
 <body>
 <a href="{% url 'ledger:index' %}">Back to main manu</a><br>
 
+<a href="{% url 'ledger:add_prog_page' pk=user.id %}">Add new program </a><br>
+
 <h1>WelCome {{user.user_name}}</h1><br>
 
 You balance : {{user.balance}} <br>
+
+<br>
+{% if user.program_set.all %}
+    <table>
+    	<tr>
+			<th>Program date</th>
+			<th>Program detail</th>
+			<th>Program value</th>
+		</tr>
+	{% for prog in user.program_set.all %}
+            {% if prog.type_of_programe == 'I' %}
+            <tr>
+                <td>{{prog.date}}</td>
+                <td>{{prog.detail}}</td>
+                <td>{{prog.value}}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td>{{prog.date}}</td>
+                <td>{{prog.detail}}</td>
+                <td>-{{prog.value}}</td>
+            </tr>
+            {% endif %}
+        </tr>
+	{% endfor %}
+{% endif %}
+</table>
 
 </body>

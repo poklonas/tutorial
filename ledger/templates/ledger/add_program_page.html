@@ -1,0 +1,33 @@
+<head>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker({
+      dateFormat: "yy-mm-dd",
+      maxDate: "0",
+    });
+  } );
+  </script>
+</head>
+
+<body>
+<a href="{% url 'ledger:detail' pk=user.id %}">Back to User menu</a>
+
+<h1>Add Program</h1>
+<form action="{%url 'ledger:add_prog' pk=user.id %}" method="post">
+{% csrf_token %}
+
+	Detail  : <br>
+    <input type="text" name="detail" size="40" required></input><br>
+    Value : <input id = val type="number" name="value" min="0" step="0.01" required></input><br>
+    Date: <input type="text" id="datepicker" name="date" required><br>
+    Type_for :
+        <input type="radio" name="for" value="I">Income</input>
+        <input type="radio" name="for" value="E">Expenses</input><br>
+	<input type="submit" value="Add">
+</form>
+
+</body>

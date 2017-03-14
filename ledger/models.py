@@ -12,6 +12,9 @@ class User(models.Model):
     def __str__(self):
         return self.user_name
 
+    def update_balance(self, value):
+        self.balance += int(value)
+
 class Program(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     detail = models.CharField(max_length=100)
