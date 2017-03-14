@@ -36,9 +36,9 @@ def add_prog(request, pk):
     prog_date = request.POST.get('date')
     prog_for = request.POST.get('for')
     if(prog_for == 'E'):
-        update_balance(-int(prog_val), pk)
+        update_balance(-float(prog_val), pk)
     else:
-        update_balance(int(prog_val), pk)
+        update_balance(float(prog_val), pk)
     user = User.objects.get(pk=pk)
     user.program_set.create( detail=prog_detail,
                              value=prog_val,

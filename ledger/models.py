@@ -13,7 +13,7 @@ class User(models.Model):
         return self.user_name
 
     def update_balance(self, value):
-        self.balance += int(value)
+        self.balance += float(value)
 
 class Program(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
