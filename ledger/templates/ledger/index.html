@@ -1,1 +1,24 @@
-<h1> Hello </h1>
+<head>
+
+</head>
+
+<body>
+
+<h1>WelCome</h1>
+
+<a href="{% url 'ledger:add_user_page' %}">  Add User </a> <br>
+
+{% if UserList %}
+    <table>
+    	<tr>
+			<th>User name</th>
+		</tr>
+    {% for user in UserList %}
+		<tr>
+			<td><a href="{% url 'ledger:detail' pk=user.pk %}">{{ user.user_name }}</a></td>
+		</tr>
+    {% endfor %}
+    </table>
+{% endif %}
+</center>
+</body>

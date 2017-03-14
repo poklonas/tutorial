@@ -1,0 +1,15 @@
+<head>
+</head>
+
+<body>
+<a href="{% url 'ledger:index' %}">Back to main manu</a>
+
+
+<h1>Add User</h1>
+<form action="{%url 'ledger:add_user'%}" method="post">
+{% csrf_token %}
+	User name is ?   : <input type="text" name="user_name" size="50" required></input>
+	<input type="submit" value="Add">
+</form>
+
+</body>
